@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const fastify = require("fastify")({ logger: true });
 const path = require("path");
-require("dotenv").config();
 const routes = require("./routes");
 
 fastify.register(require("fastify-static"), {
@@ -20,10 +19,6 @@ mongoose
     () => console.log("Database successfully connected!"),
     error => console.log("Unable to connect to database: " + error)
   );
-
-// fastify.get("/", (req, reply) => {
-//   reply.send("hey fastify server");
-// });
 
 fastify.get("/", async (req, reply) => {
   try {
